@@ -88,7 +88,7 @@ nombreAlumno Varchar(50) Not Null
 
 ## Tabla Respuesta Alumno
 
-La tabla respuesta alumno cuenta con un id, el id de la tabla alumno, el id de la tabla prueba, el id de la tabla pregunta y el id de la tabla alternativa.
+La tabla RespuestaAlumno cuenta con un id, el id de la tabla alumno, el id de la tabla prueba, el id de la tabla pregunta y el id de la tabla alternativa.
 
 ```SQL
 CREATE TABLE respuestaAlumno (
@@ -103,4 +103,24 @@ ALTER TABLE respuestaAlumno ADD FOREIGN KEY (idAlumno) REFERENCES Alumno(idAlumn
 ALTER TABLE respuestaAlumno ADD FOREIGN KEY (idPrueba) REFERENCES Prueba(idPrueba);
 ALTER TABLE respuestaAlumno ADD FOREIGN KEY (idAlternativa) REFERENCES Alternativa(idAlternativa);
 ALTER TABLE respuestaAlumno ADD FOREIGN KEY (idPregunta) REFERENCES Pregunta(idPregunta);
+```
+
+## Tabla AlumnoPrograma
+
+La tabla AlumnoPrograma cuenta con un id, el id de la tabla programa y el id de la tabla alumno.
+
+```SQL
+CREATE TABLE ALUMNOPROGRAMA (
+idAlumnoPrograma Integer Primary Key Not Null,
+idPrograma Integer Not Null,
+idAlumno Integer Not Null
+);
+
+ALTER TABLE ALUMNOPROGRAMA
+ADD FOREIGN KEY (idPrograma) 
+REFERENCES Programa(idPrograma);
+
+ALTER TABLE ALUMNOPROGRAMA
+ADD FOREIGN KEY (idAlumno) 
+REFERENCES Alumno(idAlumno);
 ```
